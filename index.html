@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Railway Route Visualizer</title>
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
     <style>
         * {
             margin: 0;
@@ -39,6 +42,38 @@
             padding: 10px;
             margin-top: 20px;
         }
+        
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        #train-search {
+            display: inline-block;
+        }
+        
+        #train-number {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            width: 200px;
+        }
+        
+        #train-search button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        #train-search button:hover {
+            background-color: #45a049;
+        }
+        #map { height: 500px; }
     </style>
 </head>
 <body>
@@ -47,11 +82,28 @@
     </header>
     
     <main>
-        <p>Welcome to the Railway Route Visualizer</p>
+        <div class="search-container">
+            <form id="train-search">
+                <input type="text" id="train-number" placeholder="Enter Train Number" required>
+                <button type="button" id="search-btn">Search</button>
+            </form>
+        </div>
+         <div id="map">
+
+         </div>
+        <p style="text-align: center;">Welcome to the Railway Route Visualizer</p>
+        <p style="text-align: center;">Select a route to visualize its details.</p>
     </main>
-    
     <footer>
         <p>&copy; 2024 Railway Route Visualizer. All rights reserved.</p>
     </footer>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+    <script>
+    const map = L.map('map').setView([20.5937, 78.9629], 5);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    </script>
 </body>
 </html>
